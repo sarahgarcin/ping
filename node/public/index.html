@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Test node</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+
+Index
+<br>
+
+<a href="/page.html">la page</a>
+
+<br>
+
+youpi
+
+<br>
+
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<button id="validation">Valider</button>
+
+ <script src="/js/jquery-1.11.0.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+   
+   
+
+
+    $(document).ready(function(){
+
+      console.log("pret");
+
+      var socket = io.connect('http://192.168.1.28');
+        socket.on('news', function (data) {
+        console.log(data);
+        socket.emit('my other event', { my: 'data' });
+      });
+
+      
+
+      $('button').click(function(event){
+        socket.send(JSON.stringify($('textarea').val()));
+
+      });
+
+      $( "textarea" ).keyup(function() {
+        socket.send(JSON.stringify($('textarea').val()));
+      });
+            
+
+      socket.on('message', function (data) {
+
+        //console.log('message reçu :');
+        //console.log(JSON.parse(data));
+
+       $('textarea').val(JSON.parse(data));
+
+      });
+
+    });
+
+  </script>
+  
+</body>
+</html>

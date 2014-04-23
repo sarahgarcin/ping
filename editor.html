@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>PING</title>	
+	
+    <link rel="stylesheet" href="ui-lightness/jquery-ui-1.10.4.custom.min.css" type="text/css"/>
+    <link rel="stylesheet" href="jquery-te-1.4.0.css" type="text/css"/>
+	<link rel="stylesheet" href="kube.css" type="text/css"/>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+    
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-te-1.4.0.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.timeslider.js"></script>
+
+</head>
+
+<body>
+
+    <div class="home">
+        <a href="home.html"><h6>Home</h6></a>
+    </div>
+
+<!--     <p>
+    <div id="heure"></div>    
+  <label for="amount"></label>
+  <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+</p>
+ 
+<div id="slider-vertical" style="height:200px;"></div> -->
+
+
+	<div id="editor">
+
+        <div class="header">
+            <ul>
+                <li>Conférence Pierre Bernard</li>
+                <li>«Affiches»</li>
+                <li>04 avril 2014</li>
+                <li>ENSAD</li>
+            </ul>
+
+        <button class="btn button_texte" style="font-size:0.7em;">Cacher texte</button>
+        <button class="btn button_image" style="font-size:0.7em;">Cacher images</button>
+        <button class="btn button_txtimg" style="font-size:0.7em;">Texte + images</button>
+        </div>
+
+
+
+        <div class="editor">
+        <textarea id="myEditor"></textarea>
+        </div>
+
+        <div class="image">
+        <textarea id="imageeditor"></textarea>
+        </div>
+
+        <h1 class="pad_name">Jean-Jacques</h1>
+        <iframe src='http://lite2.framapad.org/p/9fpl4WhCx5?showChat=false&showLineNumbers=false&showControls=false' class= "pad1" width=500px height=250px></iframe>
+
+        <h1 class="pad_name">Jean-Robert</h1>
+       <iframe src='http://lite2.framapad.org/p/DMByWouxga?showChat=false&showLineNumbers=false&showControls=false' class= "pad2" width=500px height=250px></iframe>
+
+       <h1 class="pad_name">Jean-Maurice</h1>
+       <iframe src='http://lite2.framapad.org/p/t5bc41Tw4t?showChat=false&showLineNumbers=false&showControls=false' class= "pad3" width=500px height=250px></iframe>
+
+    </div>
+
+
+
+</body>
+
+<script>
+$(document).ready(function(){
+    // $("textarea").myTextEditor();
+    $(".editor textarea").jqte({
+        br: false,
+        center: false,
+        color: false,
+        fsize: false,
+        indent: false,
+        left: false,
+        ol: false,
+        outdent: false,
+        remove: false,
+        right: false,
+        rule: false,
+        source: false,
+        sub: false,
+        sup: false,
+    });
+
+    $(".image textarea").jqte({
+        b: false,
+        br: false,
+        center: false,
+        color: false,
+        fsize: false,
+        format: false,
+        i: false,
+        indent: false,
+        linktypes: ["Web URL", "Picture"],
+        left: false,
+        ol: false,
+        outdent: false,
+        p: false,
+        remove: false,
+        right: false,
+        rule: false,
+        source: false,
+        sub: false,
+        strike: false,
+        sup: false,
+        u: false,
+        ul: false,
+        unlink: false
+        
+    });
+
+    $(".button_texte").click(function(){
+        $(".editor").css("display", "none");
+        $(".image").css("display", "block");
+        $(".image").css("width", "65%");
+        $(".jqte img").css("width","300px");
+    });
+
+    $(".button_image").click(function(){
+        $(".editor").css("display", "block");
+        $(".image").css("display", "none");
+        $(".editor").css("width", "65%");
+
+    });
+
+    $(".button_txtimg").click(function(){
+        $(".editor").css("display", "block");
+        $(".image").css("display", "block");
+        $(".editor").css("width", "45%");
+        $(".image").css("width", "20%");
+        $(".jqte img").css("width","200px");
+    });
+
+
+    setInterval(
+     function(){   
+
+        var press = jQuery.Event("keypress");
+        press.which = 13;
+        $("html").trigger(press);
+     },
+     1000  /* 10000 ms = 10 sec */
+);
+
+
+});
+
+
+$(document).ready(function(){   
+
+        var press = jQuery.Event("keypress");
+        press.which = 13;
+        $(".editor").trigger(press);
+
+        $('.editor').keydown(function (e){
+        if(e.keyCode == 13){
+            console.log('you pressed enter ^_^');
+        }
+    });
+});
+
+// $(function() {
+//     $( "#slider-vertical" ).slider({
+//       orientation: "vertical",
+//       range: "min",
+//       min: 0,
+//       max: 100,
+//       value: 100,
+//       step:1,
+//       slide: function( event, ui ) {
+//         $("#heure").val(100-ui.value );
+//         var minutes = Math.floor(ui.value / 60);
+//         var seconds = ui.value - (minutes * 60);
+
+//             if(minutes.length == 1) minutes = '0' + minutes;
+//             if(seconds.length == 1) seconds = '0' + seconds;
+
+//             $('#heure').html(minutes+':'+seconds);
+//       }
+
+//     });
+//     $( "#heure" ).val($("#slider-vertical").slider( "value" ) );
+
+
+//   });
+
+
+// $(document).ready(function() {
+//     $("#slider-vertical").slider({
+//         orientation: "vertical",
+//         range: "min",
+//         min: 0,
+//         max: 3700,
+//         value: 0,
+//         step: 1,
+//         animate: true,                                  
+//         slide: function(event, ui) {
+//             $("#amount").val(ui.value);
+//         }   
+//     });
+
+// $("#amount").val($("#slider-vertical").slider("value", 1++));
+// });
+
+</script>
+
+
+
+
+
