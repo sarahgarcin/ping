@@ -11,8 +11,11 @@
 
 </head>
 <body>
+<div class="title">
+	PING
+</div>
 
-<div class="left"></div>
+<!-- <div class="left"></div> -->
 <div class="right">
     <textarea></textarea>
 </div>
@@ -23,14 +26,9 @@
 
 $(document).ready(function () {
 
-    $temps = 0;
+    // $temps = 0;
 
-    // var chrono = setInterval(function () {
-    //     timeline();
-    // }, 1000);
     keyEvent();
-
-
 });
 
 
@@ -39,28 +37,17 @@ function keyEvent() {
  						
 	var chrono = 0;
 	var typingTimer;                //timer identifier
-	var doneTypingInterval = 30000;  //time in ms, 5 second for example  
+	var doneTypingInterval = 5000;  //time in ms, 5 second for example  
 
 	chrono = setInterval(function () {
 		var currentVal = $('textarea').val();
 		$('textarea').val(currentVal + '|\n');
-	}, 30000);
+	}, 5000);
 
-    $('textarea').keypress(function(event){
-    	var keycode = (event.keyCode ? event.keyCode : event.which);
-    	if(keycode != '13'){
+    $('textarea').keydown(function(event){
     		console.log('You pressed a key');
     		clearInterval(chrono);
     		clearTimeout(typingTimer);    		
-    	}
-		else{
-			console.log('You pressed a "enter" key in textbox');
-			chrono = setInterval(function () {
-				var currentVal = $('textarea').val();
-				$('textarea').val(currentVal + '|\n');
-			}, 30000);
-
-		}
 	});
 
 	$('textarea').keyup(function(){
@@ -72,67 +59,27 @@ function keyEvent() {
 	chrono = setInterval(function () {
 		var currentVal = $('textarea').val();
 		$('textarea').val(currentVal + '|\n');
-	}, 30000);
+	}, 5000);
 	}
 
 }
     	
+// function timeline() {
+
+// 	$temps++;
+
+//     var etape = $("<div class='etape'>" + $temps + "</div>");
+
+//     date = new Date();
+
+//     etape.data("timecode", date)
+//         .click(function (event) {
+//         console.log($(this).text() + " " + $(this).data("timecode"));
+//     });
 
 
-
-
-
-//     	if($('textarea').keypress(){
-
-//     	})
-//     	console.log('You pressed a key');
-//     }
-
-//     if ($('textarea').keypress()){
-//     	console.log('You pressed a key');
-//     }
-
-//     else if  {
-//    	$('textarea').keypress(function(event){
-//  		var keycode = (event.keyCode ? event.keyCode : event.which);
-// 		if(keycode == '13'){
-// 			console.log('You pressed a "enter" key in textbox');
-// 			var currentVal = $('textarea').val();
-//     		$('textarea').val(currentVal + '|\n');	
-// 		}
- 
-// 	});
-
-// $(document).keypress(function(e) {
-//     if(e.which == 13) {
-//         alert('You pressed enter!');
-//     }
-// });
-
-//     }
-
-//     else {
-// 		var currentVal = $('textarea').val();
-//     	$('textarea').val(currentVal + '|\n');
-// 	}
-
-
-function timeline() {
-
-	$temps++;
-
-    var etape = $("<div class='etape'>" + $temps + "</div>");
-
-    date = new Date();
-
-    etape.data("timecode", date)
-        .click(function (event) {
-        console.log($(this).text() + " " + $(this).data("timecode"));
-    });
-
-
-    $(".left").append(etape);
-}
+//     $(".left").append(etape);
+// }
 
 
 </script>
