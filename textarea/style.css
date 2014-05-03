@@ -1,0 +1,28 @@
+textarea {
+    width:400px;
+    height:400px;
+}
+.left {
+    float:left;
+    width:50px;
+    height:400px;
+    background:red;
+    padding:2px;
+    border:solid red 1px;
+    overflow:auto;
+}
+.right {
+    margin-left:50px;
+}
+.etape {
+    text-align:right;
+    font-family:monospace;
+    font-size:10px;
+    padding-right:10px;
+}
+.etape:nth-child(odd) {
+    background:orange;
+}
+.etape:nth-child(even) {
+    background:yellow;
+}
