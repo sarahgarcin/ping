@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>PING</title>	
+	
+    <link rel="stylesheet" href="ui-lightness/jquery-ui-1.10.4.custom.min.css" type="text/css"/>
+    <link rel="stylesheet" href="jquery-te-1.4.0.css" type="text/css"/>
+	<link rel="stylesheet" href="kube.css" type="text/css"/>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+    
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-te-1.4.0.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.js"></script>
+
+</head>
+
+<body>
+
+
+        <div class="editor">
+        <textarea id="myEditor"></textarea>
+        </div>
+
+</body>
+
+<script>
+$(document).ready(function(){
+
+     keyEvent();
+
+    $(".editor textarea").jqte({
+        br: false,
+        center: false,
+        color: false,
+        fsize: false,
+        indent: false,
+        left: false,
+        ol: false,
+        outdent: false,
+        remove: false,
+        right: false,
+        rule: false,
+        source: false,
+        sub: false,
+        sup: false,
+    });
+
+});
+
+
+function keyEvent() {
+                        
+    var chrono = 0;
+    var typingTimer;                //timer identifier
+    var doneTypingInterval = 30000;  //time in ms, 5 second for example  
+
+    chrono = setInterval(function () {
+        var currentVal = $('.jqte_editor textarea').val();
+        $('.jqte_editor textarea').val(currentVal + '|\n');
+    }, 30000);
+
+    $('.jqte_editor textarea').keydown(function(event){
+        if(event.which != '13'){
+            console.log('You pressed a key');
+            clearInterval(chrono);
+            clearTimeout(typingTimer);          
+        }
+    });
+
+    $('.jqte_editor textarea').keyup(function(){
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    });
+
+    function doneTyping () {
+    chrono = setInterval(function () {
+        var currentVal = $('.jqte_editor textarea').val();
+        $('.jqte_editor textarea').val(currentVal + '|\n');
+    }, 30000);
+    }
+
+}
+
+</script>
+
+
+
+
+
