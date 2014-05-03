@@ -25,49 +25,55 @@ $(document).ready(function () {
 
     $temps = 0;
 
-    var chrono = setInterval(function () {
-        timeline()
-    }, 1000);
-
-    addBR();
+    // var chrono = setInterval(function () {
+    //     timeline();
+    // }, 1000);
+    keyEvent();
 
 
 });
 
-function addBR() {
+
+
+function keyEvent() {
  						
-	var chrono = 0;  
+	var chrono = 0;
+	var typingTimer;                //timer identifier
+	var doneTypingInterval = 30000;  //time in ms, 5 second for example  
 
 	chrono = setInterval(function () {
-		linebreak();
-	}, 1000);
-
-	function linebreak() {
 		var currentVal = $('textarea').val();
 		$('textarea').val(currentVal + '|\n');
-	}
+	}, 30000);
 
     $('textarea').keypress(function(event){
     	var keycode = (event.keyCode ? event.keyCode : event.which);
     	if(keycode != '13'){
     		console.log('You pressed a key');
     		clearInterval(chrono);
+    		clearTimeout(typingTimer);    		
     	}
-		else if (keycode == '13'){
+		else{
 			console.log('You pressed a "enter" key in textbox');
 			chrono = setInterval(function () {
-				linebreak();
-			}, 1000);
-		}
-		else {
-			// chrono = setInterval(function () {
-			// 	console.log('normal');
-			// 	var currentVal = $('textarea').val();
-	  //   		$('textarea').val(currentVal + '|\n');
-	  //   	}, 1000);
-    		linebreak();
+				var currentVal = $('textarea').val();
+				$('textarea').val(currentVal + '|\n');
+			}, 30000);
+
 		}
 	});
+
+	$('textarea').keyup(function(){
+    	clearTimeout(typingTimer);
+    	typingTimer = setTimeout(doneTyping, doneTypingInterval);
+	});
+
+	function doneTyping () {
+	chrono = setInterval(function () {
+		var currentVal = $('textarea').val();
+		$('textarea').val(currentVal + '|\n');
+	}, 30000);
+	}
 
 }
     	

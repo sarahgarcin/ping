@@ -6,9 +6,9 @@ textarea {
     float:left;
     width:50px;
     height:400px;
-    background:red;
+/*    background:red;*/
     padding:2px;
-    border:solid red 1px;
+/*    border:solid red 1px;*/
     overflow:auto;
 }
 .right {
