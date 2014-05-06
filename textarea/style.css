@@ -36,10 +36,23 @@ textarea {
 
 .title {
     font-family: 'interval', monospace;
+    font-size: 10px;
+    width:120px;
+    float: left;
+}
+
+.title img{
+    width:110px;
 }
 
 .right {
-    margin-left:100px;
+    margin-top: 10px;
+    margin-left:130px;
+}
+
+.tiret {
+    color:red;
+
 }
 /*.etape {
     text-align:right;
