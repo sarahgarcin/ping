@@ -12,7 +12,8 @@
 </head>
 <body>
 <div class="title">
-	PING
+	<img src="ping.png"></img>
+
 </div>
 
 <!-- <div class="left"></div> -->
@@ -26,9 +27,10 @@
 
 $(document).ready(function () {
 
-    // $temps = 0;
-
     keyEvent();
+    // timeline();
+    rechremp();
+
 });
 
 
@@ -37,15 +39,15 @@ function keyEvent() {
  						
 	var chrono = 0;
 	var typingTimer;                //timer identifier
-	var doneTypingInterval = 5000;  //time in ms, 5 second for example  
+	var doneTypingInterval = 10000;  //time in ms, 5 second for example  
 
 	chrono = setInterval(function () {
 		var currentVal = $('textarea').val();
 		$('textarea').val(currentVal + '|\n');
-	}, 5000);
+	}, 10000);
 
     $('textarea').keydown(function(event){
-    		console.log('You pressed a key');
+    		// console.log('You pressed a key');
     		clearInterval(chrono);
     		clearTimeout(typingTimer);    		
 	});
@@ -59,26 +61,77 @@ function keyEvent() {
 	chrono = setInterval(function () {
 		var currentVal = $('textarea').val();
 		$('textarea').val(currentVal + '|\n');
-	}, 5000);
+	}, 10000);
 	}
+
+}
+
+function rechremp() {
+
+	$('textarea').keyup(function(){
+	    var oldtxt = $(this).val();
+	    var regex = /bcp/ig;
+	    var newtxt = oldtxt.replace(regex, 'beaucoup');
+	    $(this).val(newtxt);
+		
+		var oldtxt1 = $(this).val();
+		var regex1 = /ns/ig;
+	    var newtxt1 = oldtxt1.replace(regex1, 'nous');
+	    $(this).val(newtxt1);
+
+	    var oldtxt2 = $(this).val();
+	    var regex2 = /vs/ig;
+	    var newtxt2 = oldtxt2.replace(regex2, 'vous');
+	    $(this).val(newtxt2);
+
+	   	var oldtxt3 = $(this).val();
+	    var regex3 = /pr/ig;
+	    var newtxt3 = oldtxt3.replace(regex3, 'pour');
+	    $(this).val(newtxt3);
+
+	   	var oldtxt4 = $(this).val();
+	    var regex4 = /tt/ig;
+	    var newtxt4 = oldtxt4.replace(regex4, 'tout');
+	    $(this).val(newtxt4);
+
+	   	var oldtxt5 = $(this).val();
+	    var regex5 = /tjs/ig;
+	    var newtxt5 = oldtxt5.replace(regex5, 'toujours');
+	    $(this).val(newtxt5);
+
+	   	var oldtxt6 = $(this).val();
+	    var regex6 = /pq/ig;
+	    var newtxt6 = oldtxt6.replace(regex6, 'pourquoi');
+	    $(this).val(newtxt6);
+
+	   	var oldtxt7 = $(this).val();
+	    var regex7 = /avt/ig;
+	    var newtxt7 = oldtxt7.replace(regex7, 'avant');
+	    $(this).val(newtxt7);
+
+	});
+
 
 }
     	
 // function timeline() {
+    
+//  //    $temps = 0;
+// 	// $temps++;
 
-// 	$temps++;
-
-//     var etape = $("<div class='etape'>" + $temps + "</div>");
+//  //    var etape = $("<div class='etape'>" + $temps + "</div>");
 
 //     date = new Date();
 
-//     etape.data("timecode", date)
-//         .click(function (event) {
+//     $('textarea').data("timecode", date)
+//         .keypress(function (event) {
+//         	if(event.which == 13){
 //         console.log($(this).text() + " " + $(this).data("timecode"));
+//     }
 //     });
 
 
-//     $(".left").append(etape);
+//     // $(".left").append(etape);
 // }
 
 
