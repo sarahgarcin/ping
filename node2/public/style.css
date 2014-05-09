@@ -1,5 +1,38 @@
-textarea {
-	width: 400px;
-	height: 400px;
 
+@font-face {
+    font-family: 'interval';
+    src: url('fonts/interval_bold-webfont.eot');
+    src: url('fonts/interval_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/interval_bold-webfont.woff') format('woff'),
+         url('fonts/interval_bold-webfont.ttf') format('truetype'),
+         url('fonts/interval_bold-webfont.svg#intervalbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    width: 100%;
+    color:#000;
+    background: #C6C6C6;
+    font-size: 12px;
+}
+
+textarea {
+    font-family: 'interval', monospace;
+    font-size: 13px;
+    padding: 10px;
+    outline: none;
+    border: none;
+
+}
+
+.title {
+    font-family: 'interval', monospace;
+    font-size: 10px;
+    width:120px;
+    float: left;
+}
+
+.title img{
+    width:110px;
 }

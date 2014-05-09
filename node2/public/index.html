@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<div class="title">
+    <img src="ping.png"></img>
+
+</div>
+
 <div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
     <b>Users</b>
     <div id="users">
@@ -24,7 +29,8 @@
 <script>
 $(document).ready(function(){
 
-    console.log("pret");
+    keyEvent();
+    rechremp();
 
     var socket = io.connect('http://localhost:8333');
 
@@ -55,6 +61,86 @@ $(document).ready(function(){
       });
 
 });
+
+function keyEvent() {
+                        
+    var chrono = 0;
+    var typingTimer;                //timer identifier
+    var doneTypingInterval = 2000;  //time in ms, 5 second for example  
+
+    chrono = setInterval(function () {
+        var currentVal = $('#pad_perso').val();
+        $('#pad_perso').val(currentVal + '|\n');
+    }, 2000);
+
+    $('#pad_perso').keydown(function(event){
+            // console.log('You pressed a key');
+            clearInterval(chrono);
+            clearTimeout(typingTimer);          
+    });
+
+    $('#pad_perso').keyup(function(){
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    });
+
+    function doneTyping () {
+    chrono = setInterval(function () {
+        var currentVal = $('#pad_perso').val();
+        $('#pad_perso').val(currentVal + '|\n');
+    }, 2000);
+    }
+
+}
+
+function rechremp() {
+
+    $('#pad_perso').keyup(function(event){
+        var oldtxt = $(this).val();
+        var regex = /bcp/ig;
+        var newtxt = oldtxt.replace(regex, 'beaucoup');
+        $(this).val(newtxt);
+        
+        var oldtxt1 = $(this).val();
+        var regex1 = /ns/ig;
+        var newtxt1 = oldtxt1.replace(regex1, 'nous');
+        $(this).val(newtxt1);
+
+        var oldtxt2 = $(this).val();
+        var regex2 = /vs/ig;
+        var newtxt2 = oldtxt2.replace(regex2, 'vous');
+        $(this).val(newtxt2);
+
+        var oldtxt3 = $(this).val();
+        var regex3 = /pr/ig;
+        var newtxt3 = oldtxt3.replace(regex3, 'pour');
+        $(this).val(newtxt3);
+
+        var oldtxt4 = $(this).val();
+        var regex4 = /tt/ig;
+        var newtxt4 = oldtxt4.replace(regex4, 'tout');
+        $(this).val(newtxt4);
+
+        var oldtxt5 = $(this).val();
+        var regex5 = /tjs/ig;
+        var newtxt5 = oldtxt5.replace(regex5, 'toujours');
+        $(this).val(newtxt5);
+
+        var oldtxt6 = $(this).val();
+        var regex6 = /pq/ig;
+        var newtxt6 = oldtxt6.replace(regex6, 'pourquoi');
+        $(this).val(newtxt6);
+
+        var oldtxt7 = $(this).val();
+        var regex7 = /avt/ig;
+        var newtxt7 = oldtxt7.replace(regex7, 'avant');
+        $(this).val(newtxt7);
+
+    });
+
+
+}
+
 </script>
 
 
