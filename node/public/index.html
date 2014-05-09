@@ -4,23 +4,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Test node</title>
-  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-Index
-<br>
+<!-- Index
+<br> -->
 
-<a href="/page.html">la page</a>
+<!-- <a href="/page.html">la page</a> -->
 
-<br>
-
-youpi
-
-<br>
-
-<textarea name="" id="" cols="30" rows="10"></textarea>
-<button id="validation">Valider</button>
+<textarea name="" id="base" cols="30" rows="10"></textarea>
+<!-- <textarea name="" id="sarah" cols="30" rows="10"></textarea> -->
+<!-- <button id="validation">Valider</button> -->
 
  <script src="/js/jquery-1.11.0.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
@@ -33,32 +28,61 @@ youpi
 
       console.log("pret");
 
-      var socket = io.connect('http://192.168.1.28');
-        socket.on('news', function (data) {
-        console.log(data);
-        socket.emit('my other event', { my: 'data' });
-      });
+      var socket = io.connect('http://localhost:8333');
+
+      // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
+            var pseudo = prompt('Quel est votre pseudo ?');
+            socket.emit('nouveau_client', pseudo);
+            document.title = pseudo + ' - ' + document.title;
+
+      // Quand un nouveau client se connecte, on affiche l'information
+            socket.on('nouveau_client', function(pseudo) {
+                $('body').prepend('<textarea id='+ pseudo +'></textarea>');
+            })
+
+
+
+
+      //   socket.on('news', function (data) {
+      //   console.log(data);
+      //   socket.emit('my other event', { my: 'data' });
+      // });
 
       
 
-      $('button').click(function(event){
-        socket.send(JSON.stringify($('textarea').val()));
+      // $('button').click(function(event){
+      //   socket.send(JSON.stringify($('textarea').val()));
 
-      });
+      // });
 
-      $( "textarea" ).keyup(function() {
-        socket.send(JSON.stringify($('textarea').val()));
-      });
+      // $( "#victor").keyup(function() {
+      //   socket.send(JSON.stringify($('#victor').val()));
+      // });
             
 
-      socket.on('message', function (data) {
+      // socket.on('victor', function (datavictor) {
 
-        //console.log('message reçu :');
-        //console.log(JSON.parse(data));
+      //   //console.log('message reçu :');
+      //   //console.log(JSON.parse(data));
 
-       $('textarea').val(JSON.parse(data));
+      //  $('#victor').val(JSON.parse(datavictor));
 
-      });
+      // });
+
+
+      // $( "#sarah" ).keyup(function() {
+      //   socket.send(JSON.stringify($('#sarah').val()));
+      // });
+            
+
+      // socket.on('message', function (data) {
+
+      //   //console.log('message reçu :');
+      //   //console.log(JSON.parse(data));
+
+      //  $('#sarah').val(JSON.parse(data));
+
+      // });
 
     });
 
