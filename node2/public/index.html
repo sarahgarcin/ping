@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Test node</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
+    <b>Users</b>
+    <div id="users">
+        <p id="user"></p>
+    </div>
+</div>  
+<textarea name="" id="pad_perso" cols="30" rows="10" style="width:400px; height:400px;"></textarea>
+<div id="visualisateur" style="float:right;"> <textarea id="visu" style="width:300px; height:200px; margin-right:400px; "></textarea></div>
+
+ <script src="/js/jquery-1.11.0.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+
+<script>
+$(document).ready(function(){
+
+    console.log("pret");
+
+    var socket = io.connect('http://localhost:8333');
+
+    var user = prompt('Quel est votre pseudo ?');
+            socket.emit('nouveau_client', user);
+            document.title = user + ' - ' + document.title;
+
+
+    var userList = [];
+
+    socket.on('update', function (users){
+        userList = users;
+        $('#user').empty();
+        for(var i=0; i<userList.length; i++) {
+            $('#user').append("<h1>" + userList[i] + "</h1>"); 
+        }
+    });
+
+
+    $( "#pad_perso").keyup(function() {
+        socket.send(JSON.stringify($('#pad_perso').val()));
+      });
+            
+
+      socket.on('message', function (data) {
+       $('#visu').val(JSON.parse(data));
+
+      });
+
+});
+</script>
+
+
+  
+</body>
+</html>
+
