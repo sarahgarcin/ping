@@ -3,7 +3,7 @@
 ###Vendredi 9 mai 2014
 
 ####BUGS
-- Bug sur les regex, faire en sorte qu'elle ne soit prise que si le mot est tout seul, et non dans un mot. 
+*résolu* - Bug sur les regex, faire en sorte qu'elle ne soit prise que si le mot est tout seul, et non dans un mot. 
 (exemple si j'écris "prendre", le pr se transforme en "pour" pour donne "pourendre")
 - Quand un user ferme sa fenêtre, il ne se déconnecte pas vraiment et reste dans la liste des users connectés. 
 - Pour l'instant, dans le visualisateur, la ligne de temps n'apparait que lorsqu'on fait un keyup ou keydown. 
