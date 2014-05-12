@@ -19,7 +19,8 @@ io.sockets.on('connection', function (socket, user) {
 
 
     socket.on('nouveau_client', function (user) { 
-        socket.set('user', user);
+        // socket.set('user', user);
+        socket.user = user;
         users.push(user);
         updateClients();
     });
@@ -34,15 +35,14 @@ io.sockets.on('connection', function (socket, user) {
 
       });
 
-    // socket.on('disconnect', function (user) {
-    //     for(var i=0; i<users.length; i++) {
-    //         if(users[i] == users.indexOf(user)) {
-    //             delete users[users[i]];
-    //         }
-    //     }
-    //     console.log(users.indexOf(user));
-    //     updateClients(); 
-    // });
+    socket.on('disconnect', function (user) {
+        for(var i=0; i<users.length; i++) {
+            if(users[i] == socket.user) {
+                users.splice(i, 1);
+            }
+        }
+        updateClients(); 
+    });
 
     function updateClients() {
         io.sockets.emit('update', users);

@@ -66,12 +66,12 @@ function keyEvent() {
                         
     var chrono = 0;
     var typingTimer;                //timer identifier
-    var doneTypingInterval = 2000;  //time in ms, 5 second for example  
+    var doneTypingInterval = 10000;  //time in ms, 5 second for example  
 
     chrono = setInterval(function () {
         var currentVal = $('#pad_perso').val();
         $('#pad_perso').val(currentVal + '|\n');
-    }, 2000);
+    }, 10000);
 
     $('#pad_perso').keydown(function(event){
             // console.log('You pressed a key');
@@ -88,7 +88,7 @@ function keyEvent() {
     chrono = setInterval(function () {
         var currentVal = $('#pad_perso').val();
         $('#pad_perso').val(currentVal + '|\n');
-    }, 2000);
+    }, 10000);
     }
 
 }
