@@ -55,10 +55,12 @@ $(document).ready(function(){
       });
             
 
-      socket.on('message', function (data) {
+    socket.on('message', function (data) {
        $('#visu').val(JSON.parse(data));
+        var textArea = $('#visu');
+        textArea.scrollTop(textArea[0].scrollHeight - textArea.height());
 
-      });
+    });
 
 });
 
