@@ -3,24 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Test node</title>
+  <title>PING</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="title">
-    <img src="ping.png"></img>
+<div class="title" style="font-family:monospace;font-size:0.4em;">
+
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span></br>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\__\&nbsp;&nbsp;&nbsp;&nbsp;</span></br>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;/::\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/:/&nbsp;_/_&nbsp;&nbsp;&nbsp;</span></br>
+            <span>&nbsp;&nbsp;&nbsp;/:/\:\__\&nbsp;&nbsp;&nbsp;/\__\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/:/&nbsp;/\&nbsp;&nbsp;\&nbsp;&nbsp;</span></br>
+            <span>&nbsp;&nbsp;/:/&nbsp;/:/&nbsp;&nbsp;/&nbsp;&nbsp;/:/__/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_____\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;/:/&nbsp;/::\&nbsp;&nbsp;\&nbsp;</span></br>
+            <span>&nbsp;/:/_/:/&nbsp;&nbsp;/&nbsp;&nbsp;/::\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/::::::::\__\&nbsp;/:/__\/\:\__\</span></br>
+            <span>&nbsp;\:\/:/&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;\/\:\&nbsp;&nbsp;\__&nbsp;&nbsp;\:\~~\~~\/__/&nbsp;\:\&nbsp;&nbsp;\&nbsp;/:/&nbsp;&nbsp;/</span></br>
+            <span>&nbsp;&nbsp;\::/__/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\/\__\&nbsp;&nbsp;\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\&nbsp;&nbsp;/:/&nbsp;&nbsp;/&nbsp;</span></br>
+            <span>&nbsp;&nbsp;&nbsp;\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\::/&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\/:/&nbsp;&nbsp;/&nbsp;&nbsp;</span></br>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;\:\__\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/:/&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\__\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\::/&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;</span></br>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/__/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/__/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/__/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/__/&nbsp;&nbsp;&nbsp;&nbsp;</span></br>
+            <span style= "color:#C6C6C6; font-size:12px;">Ping Is Not Googledocs</span></br>
 
 </div>
 
-<div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
+<div style="float:left;width:100px;height:300px;padding:10px;overflow:scroll-y;">
     <b>Users</b>
     <div id="users">
         <p id="user"></p>
     </div>
-</div>  
-<textarea name="" id="pad_perso" cols="30" rows="10" style="width:400px; height:400px;"></textarea>
-<div id="visualisateur" style="float:right;"> <textarea id="visu" style="width:300px; height:200px; margin-right:400px; "></textarea></div>
+</div> 
+<div id="content" style="width:100%; height:550px;"> 
+<p style="position:absolute; top:5px; left:10%; ">PAD PERSO</p>
+<textarea name="" id="pad_perso" cols="30" rows="10" style="width:30%; height:100%; float:left; margin-left::;0px; margin-top:30px;"></textarea>
+<p style="position:absolute; top:5px; right:52%;">RIVIERE</p><div id="river" style="width:15%; height:100%; background:#fff; float:left; margin-left:20px; margin-top:30px;"></div>
+<div id="visualisateur"><p style="position:absolute; top:5px; right:33%;">VISUALISATEURS</p><textarea id="visu" style="width:25%; height:200px; margin-right:20px; float:right; background:#C6C6C6; border-top:1px solid #000; border-bottom:1px solid #000; margin-top:30px; "></textarea></div>
 
  <script src="/js/jquery-1.11.0.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
@@ -32,7 +48,7 @@ $(document).ready(function(){
     keyEvent();
     rechremp();
 
-    var socket = io.connect('http://localhost:8333');
+    var socket = io.connect('http://172.30.24.67:8333');
 
     var user = prompt('Quel est votre pseudo ?');
             socket.emit('nouveau_client', user);
@@ -45,7 +61,7 @@ $(document).ready(function(){
         userList = users;
         $('#user').empty();
         for(var i=0; i<userList.length; i++) {
-            $('#user').append("<h1>" + userList[i] + "</h1>"); 
+            $('#user').append("<h1>" + userList[i] + "</h1>");
         }
     });
 
@@ -137,6 +153,57 @@ function rechremp() {
         var regex7 = /\bavt\b /ig;
         var newtxt7 = oldtxt7.replace(regex7, 'avant ');
         $(this).val(newtxt7);
+
+        var oldtxt8 = $(this).val();
+        var regex8 = /\bdt\b /ig;
+        var newtxt8 = oldtxt8.replace(regex8, 'dont ');
+        $(this).val(newtxt8);
+
+        var oldtxt9 = $(this).val();
+        var regex9 = /\bdc\b /ig;
+        var newtxt9 = oldtxt9.replace(regex9, 'donc ');
+        $(this).val(newtxt9);
+
+        var oldtxt10 = $(this).val();
+        var regex10 = /\btps\b /ig;
+        var newtxt10 = oldtxt10.replace(regex10, 'temps ');
+        $(this).val(newtxt10);
+
+        var oldtxt11 = $(this).val();
+        var regex11 = /\blgtps\b /ig;
+        var newtxt11 = oldtxt11.replace(regex11, 'longtemps ');
+        $(this).val(newtxt11);
+
+        var oldtxt12 = $(this).val();
+        var regex12 = /\bdvlpt\b /ig;
+        var newtxt12 = oldtxt12.replace(regex12, 'développement ');
+        $(this).val(newtxt12);
+
+        var oldtxt13 = $(this).val();
+        var regex13 = /\bpb\b /ig;
+        var newtxt13 = oldtxt13.replace(regex13, 'problème ');
+        $(this).val(newtxt13);
+
+        var oldtxt14 = $(this).val();
+        var regex14 = /\brdv\b /ig;
+        var newtxt14 = oldtxt14.replace(regex14, 'rendez-vous ');
+        $(this).val(newtxt14);
+
+        var oldtxt15 = $(this).val();
+        var regex15 = /\bgvt\b /ig;
+        var newtxt15 = oldtxt15.replace(regex15, 'gouvernement ');
+        $(this).val(newtxt15);
+
+        var oldtxt16 = $(this).val();
+        var regex16 = /\bmvt\b /ig;
+        var newtxt16 = oldtxt16.replace(regex16, 'mouvement ');
+        $(this).val(newtxt16);
+
+        var oldtxt17 = $(this).val();
+        var regex17 = /\bnbx\b /ig;
+        var newtxt17 = oldtxt17.replace(regex17, 'nombreux ');
+        $(this).val(newtxt17);
+
 
     });
 

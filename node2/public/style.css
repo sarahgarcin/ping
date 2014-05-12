@@ -11,10 +11,14 @@
 }
 
 body {
-    width: 100%;
+    width: 98%;
+    height: 100%;
     color:#000;
     background: #C6C6C6;
     font-size: 12px;
+    font-family: 'interval', monospace;
+    margin:10px;
+    overflow: hidden;
 }
 
 textarea {
@@ -27,12 +31,5 @@ textarea {
 }
 
 .title {
-    font-family: 'interval', monospace;
-    font-size: 10px;
-    width:120px;
-    float: left;
-}
-
-.title img{
-    width:110px;
+    float: right;
 }
