@@ -25,15 +25,13 @@ io.sockets.on('connection', function (socket, user) {
         updateClients();
     });
 
-    // socket.on('textarea', function (data){
-    //     socket.broadcast.emit('textarea', data);
-
-    // });
-
     socket.on('message', function (data) {        
         socket.broadcast.emit('message',data);
-
       });
+
+    socket.on('user image', function (msg) {
+      socket.broadcast.emit('user image', socket.user, msg);
+    });
 
     socket.on('disconnect', function (user) {
         for(var i=0; i<users.length; i++) {

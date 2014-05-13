@@ -19,4 +19,9 @@
 - Le pad "visualisateur" ne suit pas le texte. 
 
 ####TO DO
+
 - Mettre plusieurs visualisateurs (à ce jour, on ne voit qu'un seul user dans le visu)
+
+- Faire la rivière
+
+- Faire la timeline -> timecode

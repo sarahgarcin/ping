@@ -33,3 +33,58 @@ textarea {
 .title {
     float: right;
 }
+
+#river {
+    overflow: scroll;
+}
+
+#river img{
+    width:170px;
+}
+
+#river p{
+    margin-left: 15px;
+    margin-bottom: 5px;
+    font-family: 'interval', monospace;
+    font-size: 13px;
+}
+
+#send-message {
+  position: relative;
+}
+
+#send-message>div {
+  text-align: center;
+}
+
+div.filebutton {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  font: 600 1em/1.7em "interval", helvetica, arial, sans-serif;
+  text-align: center;
+  cursor: pointer;
+  line-height: 1;
+}
+
+div.filebutton {
+  line-height: 24px;
+  margin: 5px;
+  overflow: hidden;
+  padding: 2px 0;
+  position: relative;
+  width: 150px !important;
+}
+
+.filebutton input#imagefile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  margin: 0;
+}
