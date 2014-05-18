@@ -55,15 +55,19 @@ $(document).ready(function(){
 
     var socket = io.connect('http://localhost:1337');
 
+    var id = [];
+
     var user = prompt('Quel est votre pseudo ?');
             socket.emit('nouveau_client', user);
             document.title = user + ' - ' + document.title;
+    id.push(user);
 
     var userList = [];
 
     // New socket connected, display new count on page
     socket.on('users connected', function(data){
-        $('#connected').html('Users connected: ' + data)
+        $('#connected').html('Users connected: ' + data);
+        // console.log(id[0]);
     })
 
     socket.on('update', function (users){
@@ -71,24 +75,36 @@ $(document).ready(function(){
         $('#user').empty();
         for(var i=0; i<userList.length; i++) {
             $('#user').append("<h1>" + userList[i] + "</h1>");
-            // $("#visualisateur").append(userList[i]);
         }
 
     });
 
-    $( "#pad_perso").keyup(function() {
-        socket.emit('notes', JSON.stringify($('#pad_perso').val()));
-      });
+    // for(var i=0; i<userList.length; i++) {
+    //         console.log(i);
+    //         socket.emit('id', i);
+    // }
 
-    socket.on('notes', function (data) {
-       $('#visu').val(JSON.parse(data));
-        var textArea = $('#visu');
-        textArea.scrollTop(textArea[0].scrollHeight - textArea.height());
+
+    $( "#pad_perso").keyup(function () {
+        socket.emit('notes', JSON.stringify($('#pad_perso').val()));
+        
+        for(var i=0; i<id.length; i++) {
+            console.log(id[i]);
+            socket.emit('id', id[i]);
+        }
+
     });
 
-    // socket.on('new message', function (data) {
-    //    $('#visu2').val(JSON.parse(data));
-    // });
+    socket.on('notes', function (data) {
+        $('#visu').val(JSON.parse(data));
+        var textArea = $('#visu');
+        textArea.scrollTop(textArea[0].scrollHeight - textArea.height());
+
+    });
+
+    socket.on('notes2', function (data) {
+       $('#visu2').val(JSON.parse(data));
+    });
 
 
     socket.on('user image', image);
