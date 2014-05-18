@@ -35,14 +35,13 @@
 <div id="content" style="width:100%; height:550px;"> 
 <p style="position:absolute; top:5px; left:10%; ">PAD PERSO</p>
 <textarea name="" id="pad_perso" cols="30" rows="10" style="width:30%; height:100%; float:left; margin-left::;0px; margin-top:30px;"></textarea>
-<p style="position:absolute; top:5px; right:52%;">RIVIERE</p>
-
-<div id="river" style="width:15%; height:100%; background:#fff; float:left; margin-left:10px; margin-top:30px;">
-    <div class="filebutton">Send Image<input type="file" id="imagefile" accept="image/*">
+<p style="position:absolute; top:5px; right:54%;">RIVIERE</p>
+    <div class="filebutton" style="position:absolute; top:5px; right:45%;">Send Image<input type="file" id="imagefile" accept="image/*">
     </div>
+<div id="river" style="width:15%; height:100%; background:#fff; float:left; margin-left:10px; margin-top:30px;">
 </div>
 
-<div id="visualisateur"><p style="position:absolute; top:5px; right:33%;">VISUALISATEURS</p><textarea id="visu" style="width:25%; height:200px; margin-right:20px; float:right; background:#C6C6C6; border-top:1px solid #000; border-bottom:1px solid #000; margin-top:30px; "></textarea></div>
+<div id="visualisateur"><p style="position:absolute; top:5px; right:33%;">VISUALISATEURS</p><div id="connected"></div><textarea id="visu" style="width:25%; height:200px; margin-right:20px; float:right; background:#C6C6C6; border-top:1px solid #000; border-bottom:1px solid #000; margin-top:30px; "></textarea><textarea id="visu2" style="width:25%; height:200px; margin-right:170px; float:right; background:#C6C6C6; border-top:1px solid #000; border-bottom:1px solid #000; margin-top:30px; "></textarea></div>
 
  <script src="/js/jquery-1.11.0.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
@@ -54,7 +53,7 @@ $(document).ready(function(){
     keyEvent();
     rechremp();
 
-    var socket = io.connect('http://172.30.24.67:8333');
+    var socket = io.connect('http://localhost:1337');
 
     var user = prompt('Quel est votre pseudo ?');
             socket.emit('nouveau_client', user);
@@ -62,30 +61,42 @@ $(document).ready(function(){
 
     var userList = [];
 
+    // New socket connected, display new count on page
+    socket.on('users connected', function(data){
+        $('#connected').html('Users connected: ' + data)
+    })
+
     socket.on('update', function (users){
         userList = users;
         $('#user').empty();
         for(var i=0; i<userList.length; i++) {
             $('#user').append("<h1>" + userList[i] + "</h1>");
+            // $("#visualisateur").append(userList[i]);
         }
+
     });
 
     $( "#pad_perso").keyup(function() {
-        socket.send(JSON.stringify($('#pad_perso').val()));
+        socket.emit('notes', JSON.stringify($('#pad_perso').val()));
       });
 
-    socket.on('message', function (data) {
+    socket.on('notes', function (data) {
        $('#visu').val(JSON.parse(data));
         var textArea = $('#visu');
         textArea.scrollTop(textArea[0].scrollHeight - textArea.height());
-
     });
+
+    // socket.on('new message', function (data) {
+    //    $('#visu2').val(JSON.parse(data));
+    // });
+
 
     socket.on('user image', image);
     function image (from, base64Image) {
-    $('#river').append($('<p>').append($('<b>').text(from), '</br><img src="' + base64Image + '"/>'));
-  }
-  $('#imagefile').bind('change', function(e){
+        $('#river').append($('<p>').append($('<b>').text(from), '</br><img src="' + base64Image + '"/>'));
+    }
+
+    $('#imagefile').bind('change', function(e){
       var data = e.originalEvent.target.files[0];
       var reader = new FileReader();
       reader.onload = function(evt){
