@@ -50,38 +50,37 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('notes', function (data) { 
         socket.on('id', function (id){
-            // console.log(id);
-            if(id == users[2]){
-               socket.broadcast.emit('notes2', data);
-            }
-
-            // else if(id == users[0] || id == users[1]) {
-            //     socket.broadcast.emit('notes', data);
-            //     io.sockets.socket(users[2]).emit('notes2', data);
-            //     io.sockets.socket(users[3]).emit('notes2', data);
-            // }
-
-            else if(id == users[0]) {
-                socket.broadcast.emit('notes', data);
+            if(id == users[0]){
+               socket.broadcast.emit('notes', data);
             }
 
             else if(id == users[1]) {
-                // io.sockets.socket(users[0]).emit('notes', data);
-                // io.sockets.socket(users[2]).emit('notes2', data);
-                // io.sockets.socket(users[3]).emit('notes2', data);
-                // io.sockets.socket(clients[0]).emit('notes', data);
-                // io.sockets.socket(clients[2]).emit('notes2', data);
                 clients[0].emit('notes', data);
-                clients[2].emit('notes2', data);
-                // io.sockets.socket(users[0]).emit("notes", data);
-                // io.sockets.socket(users[2]).emit('notes2', data);
-                // socket.broadcast.emit('notes', data);
+                if(clients[2]){
+                    clients[2].emit('notes2', data);
+                }
+                if(clients[3]){
+                    clients[3].emit('notes2', data);
+                }
+            }
+
+            else if(id == users[2]) {
+                clients[0].emit('notes2', data);
+                clients[1].emit('notes2', data);
+                if(clients[3]){
+                    clients[3].emit('notes3', data);
+                }
+            }
+
+            else if(id == users[3]) {
+                clients[0].emit('notes3', data);
+                clients[1].emit('notes3', data);
+                if(clients[2]){
+                    clients[2].emit('notes3', data);
+                }
             }
                  
         })
-
-
-        // socket.broadcast.emit('notes', data);
     });
 
     socket.on('user image', function (msg) {
@@ -95,11 +94,18 @@ io.sockets.on('connection', function (socket) {
             }
         }
         updateClients();
+
         // Decrease the socket count on a disconnect, emit
         socketCount--
         io.sockets.emit('users connected', socketCount);
 
-        delete clients[clients.indexOf(socket)];
+        for(var i=0; i<clients.length; i++) {
+            if(clients[i] == socket) {
+                clients.splice(i, 1);
+                console.log("client disconnect");
+            }
+        }
+
     });
 
     function updateClients() {

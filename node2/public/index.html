@@ -41,7 +41,7 @@
 <div id="river" style="width:15%; height:100%; background:#fff; float:left; margin-left:10px; margin-top:30px;">
 </div>
 
-<div id="visualisateur"><p style="position:absolute; top:5px; right:33%;">VISUALISATEURS</p><div id="connected"></div><textarea id="visu" style="width:25%; height:200px; margin-right:20px; float:right; background:#C6C6C6; border-top:1px solid #000; border-bottom:1px solid #000; margin-top:30px; "></textarea><textarea id="visu2" style="width:25%; height:200px; margin-right:170px; float:right; background:#C6C6C6; border-top:1px solid #000; border-bottom:1px solid #000; margin-top:30px; "></textarea></div>
+<div id="visualisateur"><p style="position:absolute; top:5px; right:33%;">VISUALISATEURS</p><div id="connected"></div><textarea id="visu" style="width:25%; height:200px; margin-right:20px; float:right; background:#C6C6C6; border-top:1px solid #000; border-bottom:1px solid #000; margin-top:30px; "></textarea><textarea id="visu2" style="width:25%; height:200px; margin-right:170px; float:right; background:#C6C6C6; border-top:1px solid #000; border-bottom:1px solid #000; margin-top:30px; "></textarea><textarea id="visu3" style="width:25%; height:200px; margin-right:170px; float:right; background:#C6C6C6; border-top:1px solid #000; border-bottom:1px solid #000; margin-top:30px; margin-bottom:50px; "></textarea></div>
 
  <script src="/js/jquery-1.11.0.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
@@ -53,7 +53,7 @@ $(document).ready(function(){
     keyEvent();
     rechremp();
 
-    var socket = io.connect('http://localhost:1337');
+    var socket = io.connect('http://172.30.24.167:1337');
 
     var id = [];
 
@@ -79,11 +79,6 @@ $(document).ready(function(){
 
     });
 
-    // for(var i=0; i<userList.length; i++) {
-    //         console.log(i);
-    //         socket.emit('id', i);
-    // }
-
 
     $( "#pad_perso").keyup(function () {
         socket.emit('notes', JSON.stringify($('#pad_perso').val()));
@@ -104,6 +99,14 @@ $(document).ready(function(){
 
     socket.on('notes2', function (data) {
        $('#visu2').val(JSON.parse(data));
+       var textArea = $('#visu2');
+        textArea.scrollTop(textArea[0].scrollHeight - textArea.height());
+    });
+
+    socket.on('notes3', function (data) {
+       $('#visu3').val(JSON.parse(data));
+       var textArea = $('#visu3');
+        textArea.scrollTop(textArea[0].scrollHeight - textArea.height());
     });
 
 
