@@ -28,6 +28,7 @@ var req = app.get('/', function (req, res) { // c'est ici qu'on indique les diff
 });
 
 var users = [];
+var clients =[];
 var socketCount = 0
 
 io.sockets.on('connection', function (socket) {
@@ -35,25 +36,46 @@ io.sockets.on('connection', function (socket) {
     // Socket has connected, increase socket count
     socketCount++
     // Let all sockets know how many are connected
-    io.sockets.emit('users connected', socketCount)
+    io.sockets.emit('users connected', socketCount);
+
+    clients.push(socket);
 
     socket.on('nouveau_client', function (user) { 
         // socket.set('user', user);
         socket.user = user;
         users.push(user);
         updateClients();
+
     });
 
     socket.on('notes', function (data) { 
         socket.on('id', function (id){
-            console.log(id);
+            // console.log(id);
             if(id == users[2]){
                socket.broadcast.emit('notes2', data);
-               console.log('detect 3');
             }
 
-            else if(id == users[0] || id == users[1]) {
+            // else if(id == users[0] || id == users[1]) {
+            //     socket.broadcast.emit('notes', data);
+            //     io.sockets.socket(users[2]).emit('notes2', data);
+            //     io.sockets.socket(users[3]).emit('notes2', data);
+            // }
+
+            else if(id == users[0]) {
                 socket.broadcast.emit('notes', data);
+            }
+
+            else if(id == users[1]) {
+                // io.sockets.socket(users[0]).emit('notes', data);
+                // io.sockets.socket(users[2]).emit('notes2', data);
+                // io.sockets.socket(users[3]).emit('notes2', data);
+                // io.sockets.socket(clients[0]).emit('notes', data);
+                // io.sockets.socket(clients[2]).emit('notes2', data);
+                clients[0].emit('notes', data);
+                clients[2].emit('notes2', data);
+                // io.sockets.socket(users[0]).emit("notes", data);
+                // io.sockets.socket(users[2]).emit('notes2', data);
+                // socket.broadcast.emit('notes', data);
             }
                  
         })
@@ -75,7 +97,9 @@ io.sockets.on('connection', function (socket) {
         updateClients();
         // Decrease the socket count on a disconnect, emit
         socketCount--
-        io.sockets.emit('users connected', socketCount) 
+        io.sockets.emit('users connected', socketCount);
+
+        delete clients[clients.indexOf(socket)];
     });
 
     function updateClients() {
