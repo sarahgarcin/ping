@@ -52,31 +52,41 @@ io.sockets.on('connection', function (socket) {
         socket.on('id', function (id){
             if(id == users[0]){
                socket.broadcast.emit('notes', data);
+               socket.broadcast.emit('id', id);
             }
 
             else if(id == users[1]) {
                 clients[0].emit('notes', data);
+                clients[0].emit('id', id);
                 if(clients[2]){
                     clients[2].emit('notes2', data);
+                    clients[2].emit('id2', id);
                 }
                 if(clients[3]){
                     clients[3].emit('notes2', data);
+                    clients[3].emit('id2', id);
                 }
             }
 
             else if(id == users[2]) {
                 clients[0].emit('notes2', data);
+                clients[0].emit('id2', id);
                 clients[1].emit('notes2', data);
+                clients[1].emit('id2', id);
                 if(clients[3]){
                     clients[3].emit('notes3', data);
+                    clients[3].emit('id3', id);
                 }
             }
 
             else if(id == users[3]) {
                 clients[0].emit('notes3', data);
+                clients[0].emit('id3', id);
                 clients[1].emit('notes3', data);
+                clients[1].emit('id3', id);
                 if(clients[2]){
                     clients[2].emit('notes3', data);
+                    clients[2].emit('id3', id);
                 }
             }
                  

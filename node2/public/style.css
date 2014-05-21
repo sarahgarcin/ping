@@ -17,7 +17,7 @@ body {
     background: #C6C6C6;
     font-size: 12px;
     font-family: 'interval', monospace;
-    margin:10px;
+        margin: 0 40px;
 /*    overflow: hidden;*/
 
 }
@@ -33,17 +33,71 @@ textarea {
 
 .title {
     float: right;
+    font-family:monospace;
+    font-size:0.3em;
+    color: #1A22FA;
+    margin-top: -20px;
 }
 
-#river {
+#content {
+  width:100%; 
+  margin-top: 35px;
+  height:600px;
+}
+
+
+#content .pad textarea#pad_perso{
+  width:37%;
+  height:600px;
+  float:left; 
+  margin-left:0px; 
+  margin-top:0px;
+  border-top: 1px solid #1A22FA;
+  border-left: 1px solid #1A22FA;
+  border-bottom: 1px solid #1A22FA;
+}
+
+#content .pad p{
+  color:#1A22FA;
+  font-size: 13px;
+}
+
+.common .filebutton {
+  float:left;
+  position: absolute;
+  margin-top: -30px;
+    color:#1A22FA;
+  font-size: 13px;
+}
+
+.common #river {
     overflow: scroll;
+    width:19%; 
+    height:620px; 
+    background:#fff; 
+    float:left; 
+    border-top: 1px dotted #1A22FA;
+    border-bottom: 1px dotted #1A22FA;
+    background-image: -webkit-gradient(
+  linear,
+  left top,
+  right top,
+  color-stop(0, #FFFFFF),
+  color-stop(1, #C6C6C6)
+);
+background-image: -o-linear-gradient(right, #FFFFFF 0%, #C6C6C6 100%);
+background-image: -moz-linear-gradient(right, #FFFFFF 0%, #C6C6C6 100%);
+background-image: -webkit-linear-gradient(right, #FFFFFF 0%, #C6C6C6 100%);
+background-image: -ms-linear-gradient(right, #FFFFFF 0%, #C6C6C6 100%);
+background-image: linear-gradient(to right, #FFFFFF 0%, #C6C6C6 100%);
+/*    margin-top:30px;*/
 }
 
-#river img{
+.common #river img{
     width:170px;
 }
 
-#river p{
+.common #river p{
     margin-left: 15px;
     margin-bottom: 5px;
     font-family: 'interval', monospace;
@@ -87,4 +141,52 @@ div.filebutton {
   height: 100%;
   opacity: 0;
   margin: 0;
+}
+
+#visualisateur {
+  margin-top: -15px;
+  width:28%;
+  float: left;
+}
+
+#visualisateur #connected{
+  right:210px; 
+  position:absolute;'
+}
+
+#visualisateur textarea{
+  width:100%; 
+  height:190px; 
+  margin-left: 60px;
+  background:#C6C6C6; 
+  border-bottom:1px solid #1A22FA; 
+  color:#545454;
+}
+
+
+#visualisateur #visu{
+  margin-top: -10px;
+}
+
+#visualisateur .pseudo{
+ font-size: 13px;
+ text-decoration: underline;
+ margin-left: 55px;
+ color:#545454;
+}
+
+#visualisateur .pseudo2{
+  font-size: 13px;
+ text-decoration: underline;
+ margin-left: 55px;
+ color:#545454;
+
+}
+
+#visualisateur .pseudo3{
+  font-size: 13px;
+ text-decoration: underline;
+  margin-left: 55px;
+ color:#545454;
+
 }
