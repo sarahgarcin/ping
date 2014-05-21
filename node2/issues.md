@@ -18,18 +18,23 @@
 
 - [12/05/14] Pour l'instant, dans le visualisateur, la "ligne de temps" (|) n'apparait que lorsqu'on fait un keyup ou keydown.
 
+- [19/05/14] Clignotement dans les visualisateurs depuis l'intauration du multi-users
+
+- [19/05/14] Quand un nouvel user se connecte, il ne voit pas le contenu déjà ajouté par les autres users. 
+
 ####TO DO
 
 - Pad Perso 
-	- [13/05/14] Faire un WYSIWYG (avec les fonctionnalités établies: bold, souligné etc.)
+	- [13/05/14] Faire un WYSIWYG (avec les fonctionnalités établies: bold, souligné etc.) -> MARKDOWN
 	- [13/05/14] Automatiser les Regex -> système qui permet de les ajouter
 
-- Visualisateurs
-
+(1)- Visualisateurs
+	
+	*fait pour 4 visualisateurs - 19/05/14*
 	(1)- [12/05/14] Mettre plusieurs visualisateurs (à ce jour, on ne voit qu'un seul user dans le visu - 12/05/14)
 
 
-- Faire la rivière
+(3)- Faire la rivière
 
 	*fait - 13/05/14* 
 	- Insérer des images depuis un ordinateur
@@ -46,3 +51,9 @@
 	- [13/05/14] Timecode sur les images 
 
 	- [13/05/14] Lier les différents pad par les timecodes
+
+
+(2)- Mysql
+	
+	- Enregistrer les images et les textes dans une base de données. 
+
