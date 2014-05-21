@@ -36,7 +36,7 @@ textarea {
     font-family:monospace;
     font-size:0.3em;
     color: #1A22FA;
-    margin-top: -20px;
+    margin-top: -32px;
 }
 
 #content {
@@ -66,8 +66,9 @@ textarea {
   float:left;
   position: absolute;
   margin-top: -30px;
-    color:#1A22FA;
+  color:#1A22FA;
   font-size: 13px;
+  padding-left: 50px;
 }
 
 .common #river {
@@ -100,6 +101,11 @@ background-image: linear-gradient(to right, #FFFFFF 0%, #C6C6C6 100%);
 .common #river p{
     margin-left: 15px;
     margin-bottom: 5px;
+    font-family: 'interval', monospace;
+    font-size: 13px;
+}
+
+.common #river b{
     font-family: 'interval', monospace;
     font-size: 13px;
 }
@@ -150,8 +156,10 @@ div.filebutton {
 }
 
 #visualisateur #connected{
-  right:210px; 
-  position:absolute;'
+  top:20px;
+  right:150px; 
+  position:absolute;
+  font-size: 11px;
 }
 
 #visualisateur textarea{
@@ -159,13 +167,22 @@ div.filebutton {
   height:190px; 
   margin-left: 60px;
   background:#C6C6C6; 
-  border-bottom:1px solid #1A22FA; 
+  border-bottom:1px solid rgba(26, 34, 250, 0.4); 
   color:#545454;
 }
 
 
 #visualisateur #visu{
   margin-top: -10px;
+  display:none;
+}
+
+#visualisateur #visu2{
+  display:none;
+}
+
+#visualisateur #visu3{
+  display:none;
 }
 
 #visualisateur .pseudo{
