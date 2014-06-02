@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<div class="header">
+    <div class="accueil">
+        ←
+    </div>
+    <div class="conf_title">
+        Conférence de Micheline, 20 mai 2014, ENSAD 
+    </div>
+</div>
+
 <div class="title">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span></br>
@@ -31,11 +40,14 @@
     </div>
 </div>  -->
 
+
 <div id="content"> 
     <div class="pad">
-        <p>PAD PERSO</p>
+        <p class="pad_title">PAD PERSO</p>
         <textarea name="" id="pad_perso" cols="30" rows="10">
         </textarea>
+        <div id="previewer" style="position:absolute; background:#FFF; right:20px;">
+        </div>
     </div>
     
     <div class="common">
@@ -58,8 +70,14 @@
     </div>
 
  <script src="/js/jquery-1.11.0.min.js"></script>
-<script src="http://localhost:1337/socket.io/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script src="js/markdown.js"></script>
+<script src="/js/jquery-1.7.2.min.js"></script>
+<script src="/js/jquery.caret.js"></script>
+<script src="/js/jquery.scrollTo.min.js"></script>
+<script src="/js/marked.js"></script>
+<script src="/js/rainbow-custom.min.js"></script>
+<script src="/js/crevasse.js"></script>
 
 <script>
 
@@ -67,7 +85,11 @@ $(document).ready(function(){
 
     keyEvent();
     rechremp();
-    syncScroll();
+    // syncScroll();
+
+    $("#pad_perso").crevasse({
+        previewer: $("#previewer")
+    });
 
     var socket = io.connect('http://localhost:1337');
 
@@ -98,18 +120,19 @@ $(document).ready(function(){
 
 
     // Envoie en temps réel au serveur la valeur du textarea 
-    $( "#pad_perso").keyup(function () {
+    $( "#pad_perso").keyup(function (e) {
+        e.preventDefault();
         socket.emit('notes', JSON.stringify($('#pad_perso').val()));
         
         // Envoie au serveur l'id de celui qui écrit
         for(var i=0; i<id.length; i++) {
-            console.log(id[i]);
+            // console.log(id[i]);
             socket.emit('id', id[i]);
         }
 
-        // Timecode sur chaque lettre tapée
-        var time = new Date();
-        console.log(time);
+        // // Timecode sur chaque lettre tapée
+        // var time = new Date();
+        // console.log(time);
 
     });
 
@@ -204,25 +227,25 @@ $(document).ready(function(){
 });
 
 // Synchronise les scrolls des textarea
-function syncScroll() {
+// function syncScroll() {
 
-    var $divs = $('#pad_perso, #visu');
-    var sync = function(e){
-        var $other = $divs.not(this).off('scroll'), other = $other.get(0);
-        var percentage = this.scrollTop / (this.scrollHeight - this.offsetHeight);
-        other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
-    }
-    $divs.on( 'scroll', sync);
+//     var $divs = $('#pad_perso, #visu');
+//     var sync = function(e){
+//         var $other = $divs.not(this).off('scroll'), other = $other.get(0);
+//         var percentage = this.scrollTop / (this.scrollHeight - this.offsetHeight);
+//         other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
+//     }
+//     $divs.on( 'scroll', sync);
     
-    var $divs2 = $('#pad_perso, #visu2');
-    var sync = function(e){
-    var $other = $divs2.not(this).off('scroll'), other = $other.get(0);
-    var percentage = this.scrollTop / (this.scrollHeight - this.offsetHeight);
-    other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
-    }
-    $divs2.on( 'scroll', sync);
+//     var $divs2 = $('#pad_perso, #visu2');
+//     var sync = function(e){
+//     var $other = $divs2.not(this).off('scroll'), other = $other.get(0);
+//     var percentage = this.scrollTop / (this.scrollHeight - this.offsetHeight);
+//     other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
+//     }
+//     $divs2.on( 'scroll', sync);
 
-}
+// }
 
 // Timeline 
 function keyEvent() {
@@ -233,7 +256,7 @@ function keyEvent() {
 
     chrono = setInterval(function () {
         var currentVal = $('#pad_perso').val();
-        $('#pad_perso').val(currentVal + '|\n');
+        $('#pad_perso').val(currentVal + '|  \n');
     }, 10000);
 
     $('#pad_perso').keydown(function(event){
@@ -250,7 +273,7 @@ function keyEvent() {
     function doneTyping () {
     chrono = setInterval(function () {
         var currentVal = $('#pad_perso').val();
-        $('#pad_perso').val(currentVal + '|\n');
+        $('#pad_perso').val(currentVal + '|  \n');
     }, 10000);
     }
 

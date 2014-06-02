@@ -10,17 +10,17 @@ io.set('log level', 1)
 app.use(express.static(__dirname + '/public'));
 
 // définition de la base de données 
-var db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'node'
-})
+// var db = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'root',
+//     database: 'node'
+// })
 
-// Log any errors connected to the db
-db.connect(function(err){
-    if (err) console.log(err)
-})
+// // Log any errors connected to the db
+// db.connect(function(err){
+//     if (err) console.log(err)
+// })
 
 
 var req = app.get('/', function (req, res) { // c'est ici qu'on indique les différentes routes (URLs)

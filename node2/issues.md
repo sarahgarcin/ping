@@ -18,9 +18,11 @@
 
 - [12/05/14] Pour l'instant, dans le visualisateur, la "ligne de temps" (|) n'apparait que lorsqu'on fait un keyup ou keydown.
 
-- [19/05/14] Clignotement dans les visualisateurs depuis l'intauration du multi-users
+- [19/05/14] Clignotement dans les visualisateurs depuis l'instauration du multi-users
 
 - [19/05/14] Quand un nouvel user se connecte, il ne voit pas le contenu déjà ajouté par les autres users. 
+
+- [21/05/14] Bug Update dans les pseudos sur les visualisateurs -> créer une fonction d'update
 
 ####TO DO
 
