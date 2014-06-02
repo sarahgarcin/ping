@@ -13,7 +13,7 @@
         ←
     </div>
     <div class="conf_title">
-        Conférence de Micheline, 20 mai 2014, ENSAD 
+        Diplôme blanc Victor & Sarah, 03 juin 2014, ENSAD, salle 305
     </div>
 </div>
 
@@ -35,11 +35,15 @@
 
 <div id="content"> 
     <div class="pad">
-        <p class="pad_title">PAD PERSO</p>
+<!--         <p class="pad_title">PAD PERSO</p> -->
+        <ul>
+            <li class="markdown active" href="#">MARKDOWN</li>
+            <li class="html" href="#">HTML</li>
+        </ul>
         <textarea name="" id="pad_perso" cols="30" rows="10">
         </textarea>
-        <div id="previewer" style="position:absolute; background:#FFF; right:20px;">
-        </div>
+    </div>
+    <div id="previewer">
     </div>
     
     <div class="common">
@@ -83,18 +87,19 @@ $(document).ready(function(){
 
     keyEvent();
     rechremp();
+    markdownToHtml();
     // syncScroll();
 
-    // $("#pad_perso").crevasse({
-    //     previewer: $("#previewer")
-    // });
+    $("#pad_perso").crevasse({
+        previewer: $("#previewer")
+    });
 
     var socket = io.connect('http://192.168.1.28:1337');
 
     var id = [];
 
     // Demande le pseudo quand un user se connecte + l'envoie au serveur
-    var user = prompt('Quel est votre pseudo ?');
+    var user = prompt('Quel est votre nom ?');
             socket.emit('nouveau_client', user);
             document.title = user + ' - ' + document.title;
     id.push(user);
@@ -230,6 +235,23 @@ $(document).ready(function(){
 //     $divs.on( 'scroll', sync);
 
 // }
+
+function markdownToHtml(){
+
+    $(".html").click(function(){
+        $(this).addClass("active");
+        $(".markdown").removeClass("active");
+        $("#previewer").css('display', 'block');
+
+    });
+
+    $(".markdown").click(function(){
+        $(this).addClass("active");
+        $(".html").removeClass("active");
+        $("#previewer").css('display', 'none');
+    });
+
+}
 
 // Timeline 
 function keyEvent() {

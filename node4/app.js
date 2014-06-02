@@ -57,7 +57,7 @@ io.sockets.on('connection', function (socket) {
         for(var i=0; i<clients.length; i++) {
             if(clients[i] == socket) {
                 clients.splice(i, 1);
-                console.log("client disconnect");
+                // console.log("client disconnect");
             }
         }
 
