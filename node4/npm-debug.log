@@ -1,0 +1,184 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'express', '--save' ]
+2 info using npm@1.3.21
+3 info using node@v0.10.24
+4 warn package.json node4@0.0.0 No description
+5 warn package.json node4@0.0.0 No repository field.
+6 warn package.json node4@0.0.0 No README data
+7 verbose readDependencies using package.json deps
+8 verbose cache add [ 'express', null ]
+9 verbose cache add name=undefined spec="express" args=["express",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'express',
+10 verbose parsed url   path: 'express',
+10 verbose parsed url   href: 'express' }
+11 silly lockFile f3c62de4-express express
+12 verbose lock express /home/bachir/.npm/f3c62de4-express.lock
+13 silly lockFile f3c62de4-express express
+14 silly lockFile f3c62de4-express express
+15 verbose addNamed [ 'express', '' ]
+16 verbose addNamed [ null, '*' ]
+17 silly lockFile 64a534c1-express express@
+18 verbose lock express@ /home/bachir/.npm/64a534c1-express.lock
+19 silly addNameRange { name: 'express', range: '*', hasData: false }
+20 verbose url raw express
+21 verbose url resolving [ 'https://registry.npmjs.org/', './express' ]
+22 verbose url resolved https://registry.npmjs.org/express
+23 info trying registry request attempt 1 at 14:49:24
+24 http GET https://registry.npmjs.org/express
+25 http 503 https://registry.npmjs.org/express
+26 verbose bad json <?xml version="1.0" encoding="utf-8"?>
+26 verbose bad json <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+26 verbose bad json  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+26 verbose bad json <html>
+26 verbose bad json   <head>
+26 verbose bad json     <title>503 No healthy backends</title>
+26 verbose bad json   </head>
+26 verbose bad json   <body>
+26 verbose bad json     <h1>Error 503 No healthy backends</h1>
+26 verbose bad json     <p>No healthy backends</p>
+26 verbose bad json     <h3>Guru Meditation:</h3>
+26 verbose bad json     <p>XID: 2815816186</p>
+26 verbose bad json     <hr>
+26 verbose bad json     <p>Varnish cache server</p>
+26 verbose bad json   </body>
+26 verbose bad json </html>
+27 error registry error parsing json
+28 info retry will retry, error on last attempt: SyntaxError: Unexpected token <
+28 info retry
+28 info retry <?xml version="1.0" encoding="utf-8"?>
+28 info retry <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+28 info retry  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+28 info retry <html>
+28 info retry   <head>
+28 info retry     <title>503 No healthy backends</title>
+28 info retry   </head>
+28 info retry   <body>
+28 info retry     <h1>Error 503 No healthy backends</h1>
+28 info retry     <p>No healthy backends</p>
+28 info retry     <h3>Guru Meditation:</h3>
+28 info retry     <p>XID: 2815816186</p>
+28 info retry     <hr>
+28 info retry     <p>Varnish cache server</p>
+28 info retry   </body>
+28 info retry </html>
+29 info trying registry request attempt 2 at 14:49:34
+30 http GET https://registry.npmjs.org/express
+31 http 503 https://registry.npmjs.org/express
+32 verbose bad json <?xml version="1.0" encoding="utf-8"?>
+32 verbose bad json <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+32 verbose bad json  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+32 verbose bad json <html>
+32 verbose bad json   <head>
+32 verbose bad json     <title>503 No healthy backends</title>
+32 verbose bad json   </head>
+32 verbose bad json   <body>
+32 verbose bad json     <h1>Error 503 No healthy backends</h1>
+32 verbose bad json     <p>No healthy backends</p>
+32 verbose bad json     <h3>Guru Meditation:</h3>
+32 verbose bad json     <p>XID: 2815872117</p>
+32 verbose bad json     <hr>
+32 verbose bad json     <p>Varnish cache server</p>
+32 verbose bad json   </body>
+32 verbose bad json </html>
+33 error registry error parsing json
+34 info retry will retry, error on last attempt: SyntaxError: Unexpected token <
+34 info retry
+34 info retry <?xml version="1.0" encoding="utf-8"?>
+34 info retry <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+34 info retry  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+34 info retry <html>
+34 info retry   <head>
+34 info retry     <title>503 No healthy backends</title>
+34 info retry   </head>
+34 info retry   <body>
+34 info retry     <h1>Error 503 No healthy backends</h1>
+34 info retry     <p>No healthy backends</p>
+34 info retry     <h3>Guru Meditation:</h3>
+34 info retry     <p>XID: 2815872117</p>
+34 info retry     <hr>
+34 info retry     <p>Varnish cache server</p>
+34 info retry   </body>
+34 info retry </html>
+35 info trying registry request attempt 3 at 14:50:35
+36 http GET https://registry.npmjs.org/express
+37 http 503 https://registry.npmjs.org/express
+38 verbose bad json <?xml version="1.0" encoding="utf-8"?>
+38 verbose bad json <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+38 verbose bad json  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+38 verbose bad json <html>
+38 verbose bad json   <head>
+38 verbose bad json     <title>503 No healthy backends</title>
+38 verbose bad json   </head>
+38 verbose bad json   <body>
+38 verbose bad json     <h1>Error 503 No healthy backends</h1>
+38 verbose bad json     <p>No healthy backends</p>
+38 verbose bad json     <h3>Guru Meditation:</h3>
+38 verbose bad json     <p>XID: 1617293433</p>
+38 verbose bad json     <hr>
+38 verbose bad json     <p>Varnish cache server</p>
+38 verbose bad json   </body>
+38 verbose bad json </html>
+39 error registry error parsing json
+40 silly registry.get cb [ 503,
+40 silly registry.get   { date: 'Wed, 04 Jun 2014 12:50:35 GMT',
+40 silly registry.get     server: 'Varnish',
+40 silly registry.get     'retry-after': '0',
+40 silly registry.get     'content-type': 'text/html; charset=utf-8',
+40 silly registry.get     'content-length': '419',
+40 silly registry.get     'accept-ranges': 'bytes',
+40 silly registry.get     via: '1.1 varnish',
+40 silly registry.get     'x-served-by': 'cache-fra1227-FRA',
+40 silly registry.get     'x-cache': 'MISS',
+40 silly registry.get     'x-cache-hits': '0',
+40 silly registry.get     'x-timer': 'S1401886235.614231,VS0,VE0',
+40 silly registry.get     connection: 'close' } ]
+41 silly lockFile 64a534c1-express express@
+42 silly lockFile 64a534c1-express express@
+43 error SyntaxError: Unexpected token <
+43 error
+43 error <?xml version="1.0" encoding="utf-8"?>
+43 error <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+43 error  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+43 error <html>
+43 error   <head>
+43 error     <title>503 No healthy backends</title>
+43 error   </head>
+43 error   <body>
+43 error     <h1>Error 503 No healthy backends</h1>
+43 error     <p>No healthy backends</p>
+43 error     <h3>Guru Meditation:</h3>
+43 error     <p>XID: 1617293433</p>
+43 error     <hr>
+43 error     <p>Varnish cache server</p>
+43 error   </body>
+43 error </html>
+43 error
+43 error     at Object.parse (native)
+43 error     at RegClient.<anonymous> (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:241:23)
+43 error     at Request.self.callback (/usr/lib/node_modules/npm/node_modules/request/request.js:123:22)
+43 error     at Request.EventEmitter.emit (events.js:98:17)
+43 error     at Request.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:893:14)
+43 error     at Request.EventEmitter.emit (events.js:117:20)
+43 error     at IncomingMessage.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:844:12)
+43 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+43 error     at _stream_readable.js:920:16
+43 error     at process._tickCallback (node.js:415:13)
+44 error If you need help, you may report this *entire* log,
+44 error including the npm and node versions, at:
+44 error     <http://github.com/isaacs/npm/issues>
+45 error System Linux 3.12.20-desktop-1.mga4
+46 error command "/usr/bin/node" "/usr/bin/npm" "install" "express" "--save"
+47 error cwd /mnt/Data/bachir/Documents/sarah/ping/node4
+48 error node -v v0.10.24
+49 error npm -v 1.3.21
+50 error type unexpected_token
+51 verbose exit [ 1, true ]

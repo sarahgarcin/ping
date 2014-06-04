@@ -1,107 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PING</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="header">
-    <div class="accueil">
-        ←
-    </div>
-    <div class="conf_title">
-        Diplôme blanc Victor & Sarah, 03 juin 2014, ENSAD, salle 305
-    </div>
-</div>
-
-<div class="title">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </span></br>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\__\&nbsp;&nbsp;&nbsp;&nbsp;</span></br>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;/::\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/:/&nbsp;_/_&nbsp;&nbsp;&nbsp;</span></br>
-            <span>&nbsp;&nbsp;&nbsp;/:/\:\__\&nbsp;&nbsp;&nbsp;/\__\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/:/&nbsp;/\&nbsp;&nbsp;\&nbsp;&nbsp;</span></br>
-            <span>&nbsp;&nbsp;/:/&nbsp;/:/&nbsp;&nbsp;/&nbsp;&nbsp;/:/__/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_____\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;/:/&nbsp;/::\&nbsp;&nbsp;\&nbsp;</span></br>
-            <span>&nbsp;/:/_/:/&nbsp;&nbsp;/&nbsp;&nbsp;/::\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/::::::::\__\&nbsp;/:/__\/\:\__\</span></br>
-            <span>&nbsp;\:\/:/&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;\/\:\&nbsp;&nbsp;\__&nbsp;&nbsp;\:\~~\~~\/__/&nbsp;\:\&nbsp;&nbsp;\&nbsp;/:/&nbsp;&nbsp;/</span></br>
-            <span>&nbsp;&nbsp;\::/__/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\/\__\&nbsp;&nbsp;\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\&nbsp;&nbsp;/:/&nbsp;&nbsp;/&nbsp;</span></br>
-            <span>&nbsp;&nbsp;&nbsp;\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\::/&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;\:\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\/:/&nbsp;&nbsp;/&nbsp;&nbsp;</span></br>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;\:\__\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/:/&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\:\__\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\::/&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;</span></br>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/__/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/__/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/__/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/__/&nbsp;&nbsp;&nbsp;&nbsp;</span></br>
-            <span style= "color:#C6C6C6; font-size:12px;">Ping Is Not Googledocs</span></br>
-</div>
-
-<div id="content">
-    <div class="pad">
-<!--         <p class="pad_title">PAD PERSO</p> -->
-        <ul>
-            <li class="markdown active" href="#">MARKDOWN</li>
-            <li class="html" href="#">HTML</li>
-        </ul>
-<textarea id="pad_perso">
-PING est un outil de prise de notes qui utilise
-le langage Markdown.
-
-*Balises importantes:*
-
-# Titre
-## Title 2
-### Title 3
-
-*Italique*
-
-- Liste 1
-- Liste 2
-- Liste 3
-
->Commentaires
-
-[Insérer un lien](https://duckduckgo.com/)
-</textarea>
-    </div>
-    <div id="previewer">
-    </div>
-
-    <div class="common">
-<!--         <p style="position:absolute; top:5px; right:54%;">RIVIERE</p> -->
-        <div class="filebutton">PARTAGER DES IMAGES<input type="file" id="imagefile" accept="image/*">
-        </div>
-        <div id="river">
-        </div>
-    </div>
-
-    <div id="visualisateur">
-    <!--     <p style="position:absolute; top:5px; right:33%;">VISUALISATEURS</p> -->
-        <div id="connected"></div>
-        <div class="pseudo"></div>
-        <textarea id="visu"></textarea>
-        <div class="pseudo2"></div>
-        <textarea id="visu2"></textarea>
-        <div class="pseudo3"></div>
-        <textarea id="visu3"></textarea>
-        <div class="pseudo4"></div>
-        <textarea id="visu4"></textarea>
-        <div class="pseudo5"></div>
-        <textarea id="visu5"></textarea>
-        <div class="pseudo6"></div>
-        <textarea id="visu6"></textarea>
-    </div>
-
- <script src="/js/jquery-1.11.0.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="js/markdown.js"></script>
-<script src="/js/jquery-1.7.2.min.js"></script>
-<script src="/js/jquery.caret.js"></script>
-<script src="/js/jquery.scrollTo.min.js"></script>
-<script src="/js/marked.js"></script>
-<script src="/js/rainbow-custom.min.js"></script>
-<script src="/js/crevasse.js"></script>
-
-<script>
-
 $(document).ready(function(){
+
+  var serverBaseUrl = document.domain;
+  var socket = io.connect(serverBaseUrl);
+
 
     keyEvent();
     rechremp();
@@ -112,14 +13,12 @@ $(document).ready(function(){
         previewer: $("#previewer")
     });
 
-    var socket = io.connect('http://localhost:8080');
-
     var id = [];
 
     // Demande le pseudo quand un user se connecte + l'envoie au serveur
     var user = prompt('Quel est votre nom ?');
-            socket.emit('nouveau_client', user);
-            document.title = user + ' - ' + document.title;
+    socket.emit('nouveau_client', user);
+    document.title = user + ' - ' + document.title;
     id.push(user);
 
     var userList = [];
@@ -141,14 +40,16 @@ $(document).ready(function(){
 
 
     // Envoie en temps réel au serveur la valeur du textarea
-    $( "#pad_perso").keyup(function (e) {
+    $("#pad_perso").keyup(function (e) {
         if(e.keyCode == 32 || e.keyCode == 13){
-            socket.send(JSON.stringify($('#pad_perso').val()));
+            //socket.send(JSON.stringify($('#pad_perso').val()));
+
+            socket.emit('sendnotes', {text: $('#pad_perso').val(), user:user});
 
             // Envoie au serveur l'id de celui qui écrit
-            for(var i=0; i<id.length; i++) {
-                socket.emit('id', id[i]);
-            }
+            // for(var i=0; i<id.length; i++) {
+            //     socket.emit('id', id[i]);
+            // }
         }
 
 
@@ -159,7 +60,8 @@ $(document).ready(function(){
     });
 
     // Récupération de la valeur des textarea et se mettent dans le visualisateur prévu.
-    socket.on('notes', function (data) {
+    socket.on('receivenotes', function (data) {
+
         socket.on('id', function (id) {
             if(id == userList[0]){
                 $('#visu').val(JSON.parse(data));
@@ -401,11 +303,3 @@ function rechremp() {
     });
 
 }
-
-</script>
-
-
-
-</body>
-</html>
-

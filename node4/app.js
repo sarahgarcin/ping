@@ -1,9 +1,10 @@
 var express = require('express'); //inclusion du framework express
-var app = require('express')()
+var app = express()
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server); // création d'un objet app avec express + serveur + socket.io
 
-server.listen(1337);
+
+server.listen(8080);
 io.set('log level', 1)
 
 app.use(express.static(__dirname + '/public'));
@@ -24,7 +25,7 @@ io.sockets.on('connection', function (socket) {
     io.sockets.emit('users connected', socketCount);
     clients.push(socket);
 
-    socket.on('nouveau_client', function (user) { 
+    socket.on('nouveau_client', function (user) {
         socket.user = user;
         users.push(user);
         updateClients();
@@ -35,7 +36,7 @@ io.sockets.on('connection', function (socket) {
             socket.broadcast.emit('notes', data);
         socket.on('id', function(id){
             socket.broadcast.emit('id', id);
-         })        
+         })
     });
 
     socket.on('user image', function (msg) {
